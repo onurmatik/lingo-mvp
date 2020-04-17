@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+
+{% block content %}
+
+	<div class="container text-center my-4">
+
+		<h4 class="mt-4">Yaklaşan buluşmalar</h4>
+
+		{% for meeting in meetings %}
+
+			<p class="mt-4">
+				{{ meeting.get_language_display }}
+				&middot;
+				{{ meeting.time }}
+				&middot;
+				{{ meeting.host }}
+			</p>
+
+		{% empty %}
+
+			<p class="my-4">
+				Yaklaşan buluşma bulunmuyor
+			</p>
+
+		{% endfor %}
+
+		<p class="my-4">
+			<a href="{% url 'meeting_create' %}">Buluşma ekle</a>
+		</p>
+
+	</div>
+
+{% endblock %}
